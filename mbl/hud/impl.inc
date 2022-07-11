@@ -55,3 +55,14 @@ stock CustomRPC_ToggleHud(playerid, hud_id, bool:toggled)
 
 	PR_SendPacket(bsn, playerid);
 }
+
+stock CustomRPC_ToggleEditableButton(playerid, bool:toggled)
+{
+	new BitStream:bsn = BS_New();
+	BS_WriteUint8(bsn, CUSTOM_SYNC);
+	BS_WriteInt32(bsn, 2);
+
+	BS_WriteBool(bsn, toggled);
+
+	PR_SendPacket(bsn, playerid);
+}
